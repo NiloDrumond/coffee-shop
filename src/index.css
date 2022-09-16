@@ -7,17 +7,38 @@
     @apply text-text;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
     @apply text-title;
     @apply font-title;
-    @apply font-bold;
+    @apply font-extrabold;
   }
 
+  h2 {
+      @apply text-subtitle;
+      @apply font-title;
+      @apply font-extrabold;
+    }
+
+  h3, h4, h5, h6 {
+      @apply text-subtitle;
+      @apply font-title;
+      @apply font-bold;
+    }
+
+
+  button svg {
+    @apply text-xl;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-2 py-2 rounded-md flex flex-row items-center gap-1 text-sm;
+    @apply px-2 py-2 rounded-md flex flex-row items-center gap-1 text-sm min-w-[2.25rem] justify-center h-9;
+  }
+
+  .tag {
+    text-transform: uppercase;
+    @apply px-2 py-1 rounded-[100px] text-[10px] leading-[13px] font-bold;
   }
 }
 

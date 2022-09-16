@@ -1,0 +1,96 @@
+import { Product } from '../../types';
+import expressoImg from '../../assets/products/Type=Expresso.png';
+
+export const products: Product[] = [
+  {
+    tags: ['tradicional'],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: ['tradicional', 'com leite'],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+  {
+    tags: [],
+    name: 'Expresso Tradicional',
+    price: 1,
+    description: 'O tradicional café feito com água quente e grãos moídos',
+    imgUrl: expressoImg,
+  },
+];

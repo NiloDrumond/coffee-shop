@@ -1,11 +1,15 @@
 import './App.css'
 import { Center, MantineProvider, Title } from '@mantine/core'
 import { theme } from './styles/theme'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
 
 function App() {
 
   return (
-    <div><h1 className="text-4xl">Baloo 2</h1><p className="text-3xl text-yellow-dark">Teste</p></div>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   )
 }
 

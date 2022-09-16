@@ -28,6 +28,9 @@ module.exports = {
       fontFamily: {
         sans: ['Roboto', ...defaultTheme.fontFamily.sans],
         title: ['"Baloo 2"', 'cursive'],
+      },
+      backgroundImage:  {
+        'hero-pattern': "url('/src/assets/Background.svg')"
       }
     },
   },

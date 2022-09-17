@@ -1,6 +1,6 @@
 import { OrderingAction, OrderingActions } from './actions';
 import { produce } from 'immer';
-import { Cart, DeliveryInfo, PaymentMethod } from '../../types/ordering';
+import { Cart, DeliveryInfo, PaymentMethod } from '../types';
 
 export type OrderingState = {
   cart: Cart;
@@ -14,21 +14,29 @@ export function orderingReducer(
 ): OrderingState {
   switch (action.type) {
     case OrderingActions.ADD_PRODUCT: {
-      const prevQuantity = state.cart[action.payload.index];
       return produce(state, (draft) => {
-        draft.cart[action.payload.index] =
-          prevQuantity !== undefined ? prevQuantity + 1 : 1;
+        draft.cart[action.payload.index] = action.payload.quantity;
       });
     }
     case OrderingActions.REMOVE_PRODUCT: {
-      const prevQuantity = state.cart[action.payload.index];
-      if (prevQuantity) {
-        return produce(state, (draft) => {
-          draft.cart[action.payload.index] =
-            prevQuantity === 1 ? undefined : prevQuantity - 1;
-        });
-      }
-      return state;
+      return produce(state, (draft) => {
+        draft.cart[action.payload.index] = undefined;
+      });
+    }
+    case OrderingActions.CLEAR_CART: {
+      return produce(state, (draft) => {
+        draft.cart = {};
+      });
+    }
+    case OrderingActions.SET_DELIVERY_INFO: {
+      return produce(state, (draft) => {
+        draft.deliveryInfo = action.payload.deliveryInfo;
+      });
+    }
+    case OrderingActions.SET_PAYMENT_METHOD: {
+      return produce(state, (draft) => {
+        draft.paymentMethod = action.payload.paymentMethod;
+      });
     }
     default:
       return state;

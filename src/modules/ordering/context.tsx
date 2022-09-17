@@ -1,14 +1,19 @@
 import { createContext, ReactNode, useReducer } from 'react';
 import { orderingReducer } from './reducer';
-import { addProductAction, removeProductAction } from './reducer/actions';
+import {
+  addProductAction,
+  removeProductAction,
+  setDeliveryInfoAction,
+} from './reducer/actions';
 import { Cart, DeliveryInfo, PaymentMethod } from './types';
 
 interface OrderingContextData {
   cart: Cart;
   deliveryInfo?: DeliveryInfo;
   paymentMethod?: PaymentMethod;
-  addProduct: (index: number) => void;
+  addProduct: (index: number, quantity: number) => void;
   removeProduct: (index: number) => void;
+  setDeliveryInfo: (deliveryInfo: DeliveryInfo) => void;
 }
 
 export const OrderingContext = createContext<OrderingContextData>(
@@ -24,16 +29,22 @@ export function OrderingContextProvider({
 }: OrderingContextProviderProps) {
   const [state, dispatch] = useReducer(orderingReducer, { cart: {} });
 
-  function addProduct(index: number) {
-    dispatch(addProductAction(index));
+  function addProduct(index: number, quantity: number) {
+    dispatch(addProductAction(index, quantity));
   }
 
   function removeProduct(index: number) {
     dispatch(removeProductAction(index));
   }
 
+  function setDeliveryInfo(deliveryInfo: DeliveryInfo) {
+    dispatch(setDeliveryInfoAction(deliveryInfo));
+  }
+
   return (
-    <OrderingContext.Provider value={{ ...state, addProduct, removeProduct }}>
+    <OrderingContext.Provider
+      value={{ ...state, addProduct, removeProduct, setDeliveryInfo }}
+    >
       {children}
     </OrderingContext.Provider>
   );

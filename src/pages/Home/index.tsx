@@ -8,8 +8,8 @@ export function Home() {
       <Hero />
       <h2 className="text-3xl font-extrabold mb-14">Nossos cafés</h2>
       <div className="flex flex-row flex-wrap gap-x-8 gap-y-10">
-        {products.map((product) => (
-          <ProductCard key={product.name} product={product} />
+        {products.map((product, index) => (
+          <ProductCard key={product.name} index={index} product={product} />
         ))}
       </div>
     </div>

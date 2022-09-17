@@ -10,18 +10,20 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
-  const { cart, removeProduct, addProduct } = useContext(OrderingContext);
+  const { cart, addProduct } = useContext(OrderingContext);
   const [quantity, setQuantity] = useState(cart[index] ?? 0);
 
-  const onAdd = useCallback(() => {
+  const onIncrease = useCallback(() => {
     setQuantity((prev) => prev + 1);
-    addProduct(index);
-  }, [addProduct, index]);
+  }, []);
 
-  const onRemove = useCallback(() => {
+  const onDecrease = useCallback(() => {
     setQuantity((prev) => Math.max(prev - 1, 0));
-    removeProduct(index);
-  }, [index, removeProduct]);
+  }, []);
+
+  const onAdd = useCallback(() => {
+    addProduct(index, quantity);
+  }, [addProduct, index, quantity]);
 
   return (
     <div className="rounded-tl-md rounded-tr-3xl rounded-br-md flex flex-col items-center rounded-bl-3xl bg-card w-64 h-80 px-5 pb-5 gap-2">
@@ -52,8 +54,15 @@ export function ProductCard({ product, index }: ProductCardProps) {
           </span>
         </h1>
         <div className="flex gap-2 flex-row items-center">
-          <Counter quantity={quantity} onAdd={onAdd} onRemove={onRemove} />
-          <button className="btn-primary bg-purple-dark text-card">
+          <Counter
+            quantity={quantity}
+            onIncrease={onIncrease}
+            onDecrease={onDecrease}
+          />
+          <button
+            onClick={onAdd}
+            className="btn-primary bg-purple-dark text-card"
+          >
             <ShoppingCart weight="fill" />
           </button>
         </div>

@@ -1,5 +1,6 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
 import { useContext, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.svg';
 import { OrderingContext } from '../../modules/ordering/context';
 
@@ -19,11 +20,13 @@ export function Header({ hasScrolled }: HeaderProps) {
 
   return (
     <div
-      className={`flex-row px-40 py-8 flex justify-between transition-shadow ease-in-out delay-150 ${
+      className={`flex-row px-40 py-8 flex justify-between z-20 transition-shadow ease-in-out delay-150 ${
         hasScrolled ? 'shadow-md' : 'shadow-transparent'
       }`}
     >
-      <img src={logo} />
+      <Link to="/">
+        <img src={logo} />
+      </Link>
       <div className="flex flex-row gap-2">
         <button className="btn-primary bg-purple-light text-purple-dark">
           <MapPin className="text-purple " weight="fill" />
@@ -35,7 +38,9 @@ export function Header({ hasScrolled }: HeaderProps) {
               {itemsOnCart}
             </div>
           )}
-          <ShoppingCart className="text-yellow-dark" weight="fill" />
+          <Link to="/checkout">
+            <ShoppingCart className="text-yellow-dark" weight="fill" />
+          </Link>
         </button>
       </div>
     </div>

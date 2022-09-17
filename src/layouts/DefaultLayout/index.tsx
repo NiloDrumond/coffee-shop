@@ -13,7 +13,7 @@ export function DefaultLayout() {
   );
 
   return (
-    <div className="bg-background max-w-screen flex flex-col max-h-screen  overflow-hidden">
+    <div className="bg-background max-w-screen flex flex-col max-h-screen min-h-screen  overflow-hidden">
       <Header hasScrolled={hasScrolled} />
       <div
         onScroll={handleScroll}

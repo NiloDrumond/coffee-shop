@@ -14,6 +14,8 @@ import arabeImg from '../../assets/products/Type=Árabe.png';
 import irlandesImg from '../../assets/products/Type=Irlandês.png';
 import { Product } from './types';
 
+export const DELIVERY_COST = 3.5;
+
 export const products: Product[] = [
   {
     tags: ['tradicional'],

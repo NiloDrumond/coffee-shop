@@ -2,6 +2,7 @@ import { ShoppingCart } from 'phosphor-react';
 import { useCallback, useContext, useState } from 'react';
 import { OrderingContext } from '../../modules/ordering/context';
 import { Product } from '../../modules/ordering/types';
+import { formatBRL } from '../../utils/formatBRL';
 import { Counter } from '../Counter';
 
 interface ProductCardProps {
@@ -26,7 +27,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
   }, [addProduct, index, quantity]);
 
   return (
-    <div className="rounded-tl-md rounded-tr-3xl rounded-br-md flex flex-col items-center rounded-bl-3xl bg-card w-64 h-80 px-5 pb-5 gap-2">
+    <div className="card flex flex-col items-center bg-card w-64 h-80 px-5 pb-5 gap-2">
       <img src={product.imgUrl} className="-translate-y-5 scale-[1.2]" />
       <div className="flex flex-row gap-1">
         {product.tags.length > 0 ? (
@@ -46,11 +47,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <h1 className="text-xs font-normal font-sans text-text">
           R${' '}
           <span className="text-2xl font-title">
-            {Intl.NumberFormat('pt-BR', {
-              currency: 'BRL',
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }).format(product.price)}
+            {formatBRL.format(product.price)}
           </span>
         </h1>
         <div className="flex gap-2 flex-row items-center">

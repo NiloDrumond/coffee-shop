@@ -9,7 +9,11 @@ interface CounterProps {
 export function Counter({ quantity, onIncrease, onDecrease }: CounterProps) {
   return (
     <div className="flex flex-row bg-button rounded-md gap-1 p-2 w-[72px] justify-between text-purple">
-      <button onClick={onDecrease}>
+      <button
+        disabled={quantity === 1}
+        className="disabled:text-label disabled:cursor-not-allowed"
+        onClick={onDecrease}
+      >
         <Minus className="text-base" />
       </button>
       <p className="leading-5 text-title font-normal">{quantity}</p>

@@ -32,16 +32,14 @@ export function Header({ hasScrolled }: HeaderProps) {
           <MapPin className="text-purple " weight="fill" />
           Recife, PE
         </button>
-        <button className="btn-primary relative bg-yellow-light">
+        <Link to="/checkout" className="btn-primary relative bg-yellow-light">
           {itemsOnCart > 0 && (
             <div className="absolute text-xs flex items-center font-bold leading-3 justify-center rounded-full bg-yellow-dark text-white w-[20px] h-[20px] -top-[10px] -right-[10px]">
               {itemsOnCart}
             </div>
           )}
-          <Link to="/checkout">
-            <ShoppingCart className="text-yellow-dark" weight="fill" />
-          </Link>
-        </button>
+          <ShoppingCart className="text-yellow-dark text-xl" weight="fill" />
+        </Link>
       </div>
     </div>
   );

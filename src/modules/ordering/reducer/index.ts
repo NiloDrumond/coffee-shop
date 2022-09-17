@@ -14,13 +14,21 @@ export function orderingReducer(
 ): OrderingState {
   switch (action.type) {
     case OrderingActions.ADD_PRODUCT: {
+      const { quantity, index } = action.payload;
       return produce(state, (draft) => {
-        draft.cart[action.payload.index] = action.payload.quantity;
+        draft.cart[index] = quantity + (draft.cart[index] ?? 0);
+      });
+    }
+    case OrderingActions.SET_PRODUCT: {
+      const { quantity, index } = action.payload;
+      return produce(state, (draft) => {
+        draft.cart[index] = quantity;
       });
     }
     case OrderingActions.REMOVE_PRODUCT: {
+      const { index } = action.payload;
       return produce(state, (draft) => {
-        draft.cart[action.payload.index] = undefined;
+        draft.cart[index] = undefined;
       });
     }
     case OrderingActions.CLEAR_CART: {
@@ -29,13 +37,15 @@ export function orderingReducer(
       });
     }
     case OrderingActions.SET_DELIVERY_INFO: {
+      const { deliveryInfo } = action.payload;
       return produce(state, (draft) => {
-        draft.deliveryInfo = action.payload.deliveryInfo;
+        draft.deliveryInfo = deliveryInfo;
       });
     }
     case OrderingActions.SET_PAYMENT_METHOD: {
+      const { paymentMethod } = action.payload;
       return produce(state, (draft) => {
-        draft.paymentMethod = action.payload.paymentMethod;
+        draft.paymentMethod = paymentMethod;
       });
     }
     default:

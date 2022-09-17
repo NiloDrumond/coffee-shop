@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index }: ProductCardProps) {
   const { cart, addProduct } = useContext(OrderingContext);
-  const [quantity, setQuantity] = useState(cart[index] ?? 0);
+  const [quantity, setQuantity] = useState(1);
 
   const onIncrease = useCallback(() => {
     setQuantity((prev) => prev + 1);

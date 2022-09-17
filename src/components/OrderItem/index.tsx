@@ -11,12 +11,17 @@ interface OrderItemProps {
 }
 
 export function OrderItem({ index, quantity }: OrderItemProps) {
-  const { cart, addProduct, removeProduct } = useContext(OrderingContext);
+  const { cart, setProduct, removeProduct } = useContext(OrderingContext);
 
   const product = useMemo(() => products[index], [index]);
 
-  const onIncrease = useCallback(() => {}, []);
-  const onDecrease = useCallback(() => {}, []);
+  const onIncrease = useCallback(() => {
+    setProduct(index, quantity + 1);
+  }, [index, quantity, setProduct]);
+
+  const onDecrease = useCallback(() => {
+    setProduct(index, quantity - 1);
+  }, [index, quantity, setProduct]);
 
   return (
     <>

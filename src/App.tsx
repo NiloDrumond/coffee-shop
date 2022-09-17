@@ -1,16 +1,16 @@
-import './App.css'
-import { Center, MantineProvider, Title } from '@mantine/core'
-import { theme } from './styles/theme'
-import { BrowserRouter } from 'react-router-dom'
-import { Router } from './Router'
+import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Router';
+import { OrderingContextProvider } from './modules/ordering/context';
 
 function App() {
-
   return (
     <BrowserRouter>
-      <Router />
+      <OrderingContextProvider>
+        <Router />
+      </OrderingContextProvider>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

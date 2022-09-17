@@ -1,6 +1,6 @@
 import { Hero } from '../../components/Hero';
 import { ProductCard } from '../../components/ProductCard';
-import { products } from '../../reducers/products/data';
+import { products } from '../../modules/ordering/data';
 
 export function Home() {
   return (

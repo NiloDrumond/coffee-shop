@@ -1,4 +1,3 @@
-import { Product } from '../../types';
 import expressoTradicionalImg from '../../assets/products/Type=Expresso.png';
 import expressoAmericanoImg from '../../assets/products/Type=Americano.png';
 import expressoCremosoImg from '../../assets/products/Type=Expresso Cremoso.png';
@@ -13,6 +12,7 @@ import cubanoImg from '../../assets/products/Type=Cubano.png';
 import havaianoImg from '../../assets/products/Type=Havaiano.png';
 import arabeImg from '../../assets/products/Type=Árabe.png';
 import irlandesImg from '../../assets/products/Type=Irlandês.png';
+import { Product } from './types';
 
 export const products: Product[] = [
   {
@@ -45,7 +45,7 @@ export const products: Product[] = [
   },
   {
     tags: ['tradicional', 'com leite'],
-    name: 'Expresso Tradicional',
+    name: 'Café com leite',
     price: 9.9,
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     imgUrl: cafeComLeiteImg,

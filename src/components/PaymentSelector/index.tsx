@@ -1,8 +1,36 @@
 import { CurrencyDollar } from 'phosphor-react';
-import { paymentMethods } from '../../modules/ordering/types';
+import { useCallback, useContext, useState } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
+import { OrderingContext } from '../../modules/ordering/context';
+import {
+  DeliveryInfo,
+  PaymentMethod,
+  paymentMethods,
+} from '../../modules/ordering/types';
 import { PaymentMethodIcon } from '../PaymentMethodIcon';
 
 export function PaymentSelector() {
+  const { control } = useFormContext<DeliveryInfo>();
+
+  const { deliveryInfo } = useContext(OrderingContext);
+  const [selectedMethod, setSelectedMethod] = useState<
+    PaymentMethod | undefined
+  >(deliveryInfo && deliveryInfo.paymentMethod);
+
+  const { field, fieldState } = useController({
+    control,
+    name: 'paymentMethod',
+  });
+  console.log(fieldState.error);
+
+  const handleClick = useCallback(
+    (method: PaymentMethod) => {
+      setSelectedMethod(method);
+      field.onChange(method);
+    },
+    [field],
+  );
+
   return (
     <div className="rounded-md bg-card p-10 gap-8 flex flex-col">
       <div className="flex flex-row gap-2">
@@ -14,11 +42,15 @@ export function PaymentSelector() {
           </p>
         </div>
       </div>
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row gap-3" onBlur={field.onBlur}>
         {paymentMethods.map((paymentMethod) => (
           <button
-            className="flex flex-row gap-2 bg-button p-4 h-12 flex-1 rounded-md text-xs uppercase items-center"
+            className={`${fieldState.error ? 'error' : ''} ${
+              selectedMethod === paymentMethod ? 'selected' : ''
+            } flex flex-row gap-2 bg-button p-4 h-12 flex-1 rounded-md text-xs uppercase items-center`}
             key={paymentMethod}
+            onClick={() => handleClick(paymentMethod)}
+            type="button"
           >
             <PaymentMethodIcon
               method={paymentMethod}

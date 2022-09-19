@@ -1,4 +1,4 @@
-import { DeliveryInfo, PaymentMethod } from '../types';
+import { DeliveryInfo } from '../types';
 
 export enum OrderingActions {
   ADD_PRODUCT,
@@ -34,17 +34,10 @@ export function clearCartAction() {
   return { type: OrderingActions.CLEAR_CART as const };
 }
 
-export function setDeliveryInfoAction(deliveryInfo: DeliveryInfo) {
+export function setDeliveryInfoAction(deliveryInfo: Partial<DeliveryInfo>) {
   return {
     type: OrderingActions.SET_DELIVERY_INFO as const,
     payload: { deliveryInfo },
-  };
-}
-
-export function setPaymentMethodAction(paymentMethod: PaymentMethod) {
-  return {
-    type: OrderingActions.SET_PAYMENT_METHOD as const,
-    payload: { paymentMethod },
   };
 }
 
@@ -54,5 +47,4 @@ export type OrderingAction = ReturnType<
   | typeof clearCartAction
   | typeof setDeliveryInfoAction
   | typeof setProductAction
-  | typeof setPaymentMethodAction
 >;

@@ -21,6 +21,13 @@ export type Cart = {
   [index: number]: number | undefined;
 };
 
+export const paymentMethods = [
+  'cartão de crédito',
+  'cartão de débito',
+  'dinheiro',
+] as const;
+export type PaymentMethod = typeof paymentMethods[number];
+
 export type DeliveryInfo = {
   postalCode: string;
   street: string;
@@ -29,11 +36,5 @@ export type DeliveryInfo = {
   neighborhood: string;
   city: string;
   state: string;
+  paymentMethod: PaymentMethod;
 };
-
-export const paymentMethods = [
-  'cartão de crédito',
-  'cartão de débito',
-  'dinheiro',
-] as const;
-export type PaymentMethod = typeof paymentMethods[number];

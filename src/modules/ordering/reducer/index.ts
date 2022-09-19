@@ -1,11 +1,10 @@
 import { OrderingAction, OrderingActions } from './actions';
 import { produce } from 'immer';
-import { Cart, DeliveryInfo, PaymentMethod } from '../types';
+import { Cart, DeliveryInfo } from '../types';
 
 export type OrderingState = {
   cart: Cart;
-  deliveryInfo?: DeliveryInfo;
-  paymentMethod?: PaymentMethod;
+  deliveryInfo?: Partial<DeliveryInfo>;
 };
 
 export function orderingReducer(
@@ -40,12 +39,6 @@ export function orderingReducer(
       const { deliveryInfo } = action.payload;
       return produce(state, (draft) => {
         draft.deliveryInfo = deliveryInfo;
-      });
-    }
-    case OrderingActions.SET_PAYMENT_METHOD: {
-      const { paymentMethod } = action.payload;
-      return produce(state, (draft) => {
-        draft.paymentMethod = paymentMethod;
       });
     }
     default:

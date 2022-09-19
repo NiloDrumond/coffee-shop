@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { orderingReducer } from './reducer';
 import {
   addProductAction,
+  clearCartAction,
   removeProductAction,
   setDeliveryInfoAction,
   setProductAction,
@@ -10,12 +11,12 @@ import { Cart, DeliveryInfo, PaymentMethod } from './types';
 
 interface OrderingContextData {
   cart: Cart;
-  deliveryInfo?: DeliveryInfo;
-  paymentMethod?: PaymentMethod;
+  deliveryInfo?: Partial<DeliveryInfo>;
   addProduct: (index: number, quantity: number) => void;
   setProduct: (index: number, quantity: number) => void;
   removeProduct: (index: number) => void;
-  setDeliveryInfo: (deliveryInfo: DeliveryInfo) => void;
+  setDeliveryInfo: (deliveryInfo: Partial<DeliveryInfo>) => void;
+  clearCart: () => void;
 }
 
 export const OrderingContext = createContext<OrderingContextData>(
@@ -26,10 +27,18 @@ interface OrderingContextProviderProps {
   children: ReactNode;
 }
 
+const STATE_KEY = '@coffe-shop:ordering-state-1.0.0';
+
 export function OrderingContextProvider({
   children,
 }: OrderingContextProviderProps) {
-  const [state, dispatch] = useReducer(orderingReducer, { cart: {} });
+  const [state, dispatch] = useReducer(orderingReducer, { cart: {} }, () => {
+    const rawState = localStorage.getItem(STATE_KEY);
+    if (rawState) {
+      return JSON.parse(rawState);
+    }
+    return { cart: {} };
+  });
 
   function addProduct(index: number, quantity: number) {
     dispatch(addProductAction(index, quantity));
@@ -39,12 +48,20 @@ export function OrderingContextProvider({
     dispatch(removeProductAction(index));
   }
 
-  function setDeliveryInfo(deliveryInfo: DeliveryInfo) {
+  function setDeliveryInfo(deliveryInfo: Partial<DeliveryInfo>) {
     dispatch(setDeliveryInfoAction(deliveryInfo));
   }
 
   function setProduct(index: number, quantity: number) {
     dispatch(setProductAction(index, quantity));
+  }
+
+  useEffect(() => {
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+  }, [state]);
+
+  function clearCart() {
+    dispatch(clearCartAction());
   }
 
   return (
@@ -55,6 +72,7 @@ export function OrderingContextProvider({
         removeProduct,
         setDeliveryInfo,
         setProduct,
+        clearCart,
       }}
     >
       {children}

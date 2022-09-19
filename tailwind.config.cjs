@@ -3,30 +3,30 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    colors: {
-      'yellow-dark': '#C47F17',
-      yellow: '#DBAC2C',
-      'yellow-light': '#F1E9C9',
-      'purple-dark': '#4B2995',
-      purple: '#8047F8',
-      'purple-light': '#EBE5F9',
-
-      title: '#272221',
-      subtitle: '#403937',
-      text: '#574F4D',
-      label: '#8D8686',
-      button: '#E6E5E5',
-      hover: '#D7D5D5',
-      input: '#EDEDED',
-      card: '#F3F2F2',
-      background: '#FAFAFA',
-      white: '#FFFFFF',
-    },
     fontFamily: {
       title: ['Baloo 2', 'cursive'],
       sans: ['Roboto', 'sans'],
     },
     extend: {
+      colors: {
+        'yellow-dark': '#C47F17',
+        yellow: '#DBAC2C',
+        'yellow-light': '#F1E9C9',
+        'purple-dark': '#4B2995',
+        purple: '#8047F8',
+        'purple-light': '#EBE5F9',
+
+        title: '#272221',
+        subtitle: '#403937',
+        text: '#574F4D',
+        label: '#8D8686',
+        button: '#E6E5E5',
+        hover: '#D7D5D5',
+        input: '#EDEDED',
+        card: '#F3F2F2',
+        background: '#FAFAFA',
+        white: '#FFFFFF',
+      },
       fontFamily: {
         sans: ['Roboto', ...defaultTheme.fontFamily.sans],
         title: ['"Baloo 2"', 'cursive'],

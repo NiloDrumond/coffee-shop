@@ -40,7 +40,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <img src={coffeeImg} />
+      <img src={coffeeImg} className="hidden xl:block" />
     </div>
   );
 }

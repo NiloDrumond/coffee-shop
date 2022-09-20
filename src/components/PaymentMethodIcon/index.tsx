@@ -11,11 +11,11 @@ export function PaymentMethodIcon({
   iconProps,
 }: PaymentMethodIconProps) {
   switch (method) {
-    case 'cartão de crédito':
+    case 'Cartão de Crédito':
       return <CreditCard {...iconProps} />;
-    case 'cartão de débito':
+    case 'Cartão de Débito':
       return <Bank {...iconProps} />;
-    case 'dinheiro':
+    case 'Dinheiro':
       return <Money {...iconProps} />;
     default:
       return <></>;

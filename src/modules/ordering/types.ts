@@ -22,9 +22,9 @@ export type Cart = {
 };
 
 export const paymentMethods = [
-  'cartão de crédito',
-  'cartão de débito',
-  'dinheiro',
+  'Cartão de Crédito',
+  'Cartão de Débito',
+  'Dinheiro',
 ] as const;
 export type PaymentMethod = typeof paymentMethods[number];
 
